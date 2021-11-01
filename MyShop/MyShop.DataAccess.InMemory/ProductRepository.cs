@@ -39,6 +39,8 @@ namespace MyShop.DataAccess.InMemory
             if (productToUpdate != null)
             {
                 productToUpdate = product;
+                // products.Remove (productToUpdate);
+                // products.Add    (productToUpdate);
             }
             else
             {

@@ -49,22 +49,29 @@ namespace MyShop.WebUI.Controllers
         {
             Product product = context.Find(Id);
             if (product == null)
-            { return HttpNotFound(); }
-            else { return View(product); }
+            { 
+                return HttpNotFound(); 
+            }
+            else {
+                return View(product); }
         }
 
         [HttpPost]
         public ActionResult Edit(Product product, string Id)
         {
             Product productToEdit = context.Find(Id);
+
             if (productToEdit == null)
-            { return HttpNotFound(); }
+            { 
+                return HttpNotFound(); 
+            }
             else
             {
                 if (ModelState.IsValid)
                 {
                     return View(product);
                 }
+
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
                 productToEdit.Image = product.Image;
@@ -80,11 +87,15 @@ namespace MyShop.WebUI.Controllers
         public ActionResult Delete(string Id)
         {
             Product productToDelete = context.Find(Id);
+            
             if (productToDelete == null)
             {
                 return HttpNotFound();
             }
-            else { return View(productToDelete); }
+            else 
+            {
+                return View(productToDelete); 
+            }
         }
 
         [HttpPost]
@@ -92,8 +103,11 @@ namespace MyShop.WebUI.Controllers
         public ActionResult ConfirmDelete(string Id)
         {
             Product productToDelete = context.Find(Id);
+            
             if (productToDelete == null)
-            { return HttpNotFound(); }
+            {
+                return HttpNotFound(); 
+            }
             else
             {
                 context.Delete(Id);
